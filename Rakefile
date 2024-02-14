@@ -6,6 +6,8 @@ require 'csv'
 require 'fileutils'
 require 'image_optim' unless Gem.win_platform?
 require 'mini_magick'
+require 'json'
+require 'yaml'
 
 ###############################################################################
 # TASK: deploy
@@ -159,4 +161,56 @@ task :generate_derivatives, [:thumbs_size, :small_size, :density, :missing, :com
     end
   end
   puts "\e[32mSee '#{list_name}' for list of objects and derivatives created.\e[0m"
+end
+
+###############################################################################
+# TASK: generate_manifests
+###############################################################################
+
+desc "Generate IIIF manifest files from collection objects"
+task :generate_manifests do |t, args|
+
+  # Load _config.yml file
+  config = YAML.load_file('_config.yml')
+
+  # Get metadata csv value
+  csv_file_path = "_data/#{config['metadata']}.csv"
+  raise "File #{csv_file_path} does not exist" unless File.exist?(csv_file_path)
+
+  # Create 'iiif' directory within the 'objects' directory
+  iiif_directory = File.join('objects', 'iiif')
+  FileUtils.mkdir_p(iiif_directory) unless File.directory?(iiif_directory)
+  
+  CSV.foreach(csv_file_path, headers: true).with_index(1) do |row, index|
+    # Create subdirectory for each object based on objectid
+    subdirectory_path = File.join(iiif_directory, row['objectid'])
+    FileUtils.mkdir_p(subdirectory_path) unless File.directory?(subdirectory_path)
+    # Create manifest json
+    json_data = {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "/iiif/#{row['objectid']}/manifest.json",
+      "type": "Manifest",
+      "label": {
+        "en": [row['title']]
+      },
+      "items": [
+        {
+          "id": row['object_location'],
+          "type": "Image",
+          "format": "image/png",
+          "height": 1800,
+          "width": 1200,
+        }
+      ]
+    }
+
+    # Save manifest in the new subdirectory
+    file_path = File.join(subdirectory_path, "manifest.json")
+
+    File.open(file_path, "w") do |file|
+      file.write(JSON.pretty_generate(json_data))
+    end
+  end
+
+  puts "IIIF manifest files created"
 end
