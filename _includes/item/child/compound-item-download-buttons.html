@@ -27,6 +27,13 @@
             </li>
             {% endunless %}
             {% endfor %}
+            {% if page.pdf_download %}
+            <li>
+                <a target="_blank" rel="noopener" href="{{ page.pdf_download | relative_url }}" class="dropdown-item">
+                    Item pdf
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </div>
