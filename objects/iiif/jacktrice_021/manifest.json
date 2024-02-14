@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_021/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "\"Jack Trice,\" memorial statue by Christopher Bennett, 1988"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/U88_22_1.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

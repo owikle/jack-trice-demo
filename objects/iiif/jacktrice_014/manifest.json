@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_014/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Jack Trice, 1923"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-A_Trice_1579-01-02.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

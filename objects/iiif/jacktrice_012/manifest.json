@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_012/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Samuel W. Beyer letter to Chester L. Brewer regarding Trice's death, October 10, 1923"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-023_Trice_01-24-02.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

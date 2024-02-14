@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_009/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Chester L. Brewer letter to Samuel W. Beyer regarding football game at University of Missouri, October 8, 1923"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-023_Trice_01-24-01.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

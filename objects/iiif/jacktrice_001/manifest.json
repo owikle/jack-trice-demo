@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_001/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Jack Trice \"Last Letter,\" October 5, 1923"
+    ]
+  },
+  "items": [
+    {
+      "id": null,
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

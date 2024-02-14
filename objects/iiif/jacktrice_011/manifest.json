@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_011/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Memorial to Jack Trice, 1924"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-A_Trice_1578-01-03.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

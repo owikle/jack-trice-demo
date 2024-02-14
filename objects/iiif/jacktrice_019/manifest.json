@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_019/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Dave Lendt cover letter to Stan Yates, accompanying Cora Mae Trice Greene letter to Dave Lendt, August 16, 1988"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-023_Trice_01-06-01.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

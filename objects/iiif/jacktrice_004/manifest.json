@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_004/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Cora Mae Trice Greene letter to David Lendt, August 3, 1988"
+    ]
+  },
+  "items": [
+    {
+      "id": null,
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_016/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Iowa State football team, 1923"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/24-06-D_Football_1864-01-01.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}

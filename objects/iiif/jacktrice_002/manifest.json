@@ -1,0 +1,19 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "/iiif/jacktrice_002/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Front"
+    ]
+  },
+  "items": [
+    {
+      "id": "/objects/21-07-023_Trice_01-08-01-01.jpg",
+      "type": "Image",
+      "format": "image/png",
+      "height": 1800,
+      "width": 1200
+    }
+  ]
+}
