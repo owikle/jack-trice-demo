@@ -168,7 +168,7 @@ end
 ###############################################################################
 
 desc "Generate IIIF manifest files from collection objects"
-task :generate_manifests do |t, args|
+task :generate_manifests do
 
   # Load _config.yml file
   config = YAML.load_file('_config.yml')
@@ -180,37 +180,59 @@ task :generate_manifests do |t, args|
   # Create 'iiif' directory within the 'objects' directory
   iiif_directory = File.join('objects', 'iiif')
   FileUtils.mkdir_p(iiif_directory) unless File.directory?(iiif_directory)
+
+  # Initialize a hash to store parent-child relationships and standalone objects
+  objects = {}
+  CSV.foreach(csv_file_path, headers: true) do |row|
+    if row['parentid'].to_s.strip.empty?
+      # It's either a standalone object or a parent
+      objects[row['objectid']] ||= {row: row, children: []}
+    else
+      # It's a child object
+      objects[row['parentid']] ||= {row: nil, children: []}
+      objects[row['parentid']][:children] << row
+    end
+  end
   
-  CSV.foreach(csv_file_path, headers: true).with_index(1) do |row, index|
-    # Create subdirectory for each object based on objectid
-    subdirectory_path = File.join(iiif_directory, row['objectid'])
-    FileUtils.mkdir_p(subdirectory_path) unless File.directory?(subdirectory_path)
-    # Create manifest json
-    json_data = {
+  # Generate manifests for parents and standalone objects only
+  objects.each do |objectid, data|
+    next if data[:row].nil?  # Skip if the object is a child
+
+    parent_row = data[:row]
+    children = data[:children]
+
+    # Define manifest structure
+    manifest = {
       "@context": "http://iiif.io/api/presentation/3/context.json",
-      "id": "/iiif/#{row['objectid']}/manifest.json",
+      "id": "/iiif/#{parent_row['objectid']}/manifest.json",
       "type": "Manifest",
       "label": {
-        "en": [row['title']]
+        "en": [parent_row['title']]
       },
-      "items": [
-        {
-          "id": row['object_location'],
-          "type": "Image",
-          "format": "image/png",
-          "height": 1800,
-          "width": 1200,
-        }
-      ]
+      "items": []
     }
 
-    # Save manifest in the new subdirectory
-    file_path = File.join(subdirectory_path, "manifest.json")
+    # Add children as items if any, otherwise add itself
+    items = children.any? ? children : [parent_row]
+    items.each do |row|
+      next unless row['object_location']  # Skip if no object_location
+      manifest[:items] << {
+        "id": row['object_location'],
+        "type": "Image",
+        "format": "image/png",
+        "height": 1800,
+        "width": 1200,
+      }
+    end
 
+    # Save manifest in the object's subdirectory
+    subdirectory_path = File.join(iiif_directory, parent_row['objectid'])
+    FileUtils.mkdir_p(subdirectory_path) unless File.directory?(subdirectory_path)
+    file_path = File.join(subdirectory_path, "manifest.json")
     File.open(file_path, "w") do |file|
-      file.write(JSON.pretty_generate(json_data))
+      file.write(JSON.pretty_generate(manifest))
     end
   end
 
-  puts "IIIF manifest files created"
+  puts "IIIF manifest files created for parents and standalone objects"
 end
