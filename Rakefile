@@ -204,25 +204,52 @@ task :generate_manifests do
     # Define manifest structure
     manifest = {
       "@context": "http://iiif.io/api/presentation/3/context.json",
-      "id": "/iiif/#{parent_row['objectid']}/manifest.json",
-      "type": "Manifest",
+      "@id": "/iiif/#{parent_row['objectid']}/manifest.json",
+      "@type": "sc:Manifest",
       "label": {
         "en": [parent_row['title']]
       },
-      "items": []
+      "attribution": parent_row['contributing_institution'],
+      "logo": "/assets/img/collectionbuilder-logo.png",
+      "sequences": [
+        {
+          "@type": "sc:Sequence",
+          "canvases": []
+        }
+      ]
     }
 
-    # Add children as items if any, otherwise add itself
+    # Add children as items if any, otherwise add self
     items = children.any? ? children : [parent_row]
     items.each do |row|
-      next unless row['object_location']  # Skip if no object_location
-      manifest[:items] << {
-        "id": row['object_location'],
-        "type": "Image",
-        "format": "image/png",
-        "height": 1800,
-        "width": 1200,
+      next unless row['object_location'] # Skip if no object_location
+      canvas = {
+        "@type": "sc:Canvas",
+        "id": "/iiif/#{parent_row['objectid']}/manifest.json",
+        "label": row['title'],
+        "thumbnail": [
+          {
+            "id": row['image_thumb'],
+            "type": "Image",
+            "format": "image/jpeg",
+            "width": 300,
+            "height": 300
+          }
+        ],
+        "images": [
+          {
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "/iiif/#{parent_row['objectid']}/manifest.json",
+            "resource": {
+              "@type": "dctypes:Image",
+              "@id": row['object_location']
+            }
+          }
+        ]
       }
+      # Add canvas to the sequence array
+      manifest[:sequences][0][:canvases] << canvas
     end
 
     # Save manifest in the object's subdirectory

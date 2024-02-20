@@ -1,19 +1,44 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "/iiif/jacktrice_015/manifest.json",
-  "type": "Manifest",
+  "@id": "/iiif/jacktrice_015/manifest.json",
+  "@type": "sc:Manifest",
   "label": {
     "en": [
       "Jack Trice funeral on central campus, October 9, 1923"
     ]
   },
-  "items": [
+  "attribution": "Iowa State University. Special Collections and University Archives",
+  "logo": "/assets/img/collectionbuilder-logo.png",
+  "sequences": [
     {
-      "id": "/objects/21-07-A_Trice_1578-01-01.jpg",
-      "type": "Image",
-      "format": "image/png",
-      "height": 1800,
-      "width": 1200
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@type": "sc:Canvas",
+          "id": "/iiif/jacktrice_015/manifest.json",
+          "label": "Jack Trice funeral on central campus, October 9, 1923",
+          "thumbnail": [
+            {
+              "id": "/objects/thumbs/21-07-A_Trice_1578-01-01_th.jpg",
+              "type": "Image",
+              "format": "image/jpeg",
+              "width": 300,
+              "height": 300
+            }
+          ],
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "/iiif/jacktrice_015/manifest.json",
+              "resource": {
+                "@type": "dctypes:Image",
+                "@id": "/objects/21-07-A_Trice_1578-01-01.jpg"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
