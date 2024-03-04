@@ -248,6 +248,19 @@ task :generate_manifests do
           }
         ]
       }
+      # Add rendering section if object_ocr is present
+      if row['object_ocr'] && !row['object_ocr'].strip.empty?
+        rendering_section = {
+          "rendering": [
+            {
+              "@id": row['object_ocr'],
+              "format": "text/plain",
+              "label": "Raw OCR Data"
+            }
+          ]
+        }
+        canvas.merge!(rendering_section)
+      end
       # Add canvas to the sequence array
       manifest[:sequences][0][:canvases] << canvas
     end
