@@ -36,6 +36,14 @@
                 "@id": "/objects/21-07-023_Trice_01-08-01-01.jpg"
               }
             }
+          ],
+          "service": [
+            {
+              "@context": "http://iiif.io/api/search/0/context.json",
+              "@id": "/objects/ocr/i-will-01.txt",
+              "profile": "http://iiif.io/api/search/0/search",
+              "label": "Raw OCR Data"
+            }
           ]
         },
         {
@@ -60,6 +68,14 @@
                 "@type": "dctypes:Image",
                 "@id": "/objects/21-07-023_Trice_01-08-01-02.jpg"
               }
+            }
+          ],
+          "service": [
+            {
+              "@context": "http://iiif.io/api/search/0/context.json",
+              "@id": "/objects/ocr/i-will-02.txt",
+              "profile": "http://iiif.io/api/search/0/search",
+              "label": "Raw OCR Data"
             }
           ]
         }
