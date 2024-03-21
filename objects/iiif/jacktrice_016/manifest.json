@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "@id": "/iiif/jacktrice_016/manifest.json",
+  "@id": "/collections/jack-trice-demo/iiif/jacktrice_016/manifest.json",
   "@type": "sc:Manifest",
   "label": {
     "en": [
@@ -8,18 +8,18 @@
     ]
   },
   "attribution": "Iowa State University. Special Collections and University Archives",
-  "logo": "/assets/img/collectionbuilder-logo.png",
+  "logo": "/collections/jack-trice-demo/assets/img/collectionbuilder-logo.png",
   "sequences": [
     {
       "@type": "sc:Sequence",
       "canvases": [
         {
           "@type": "sc:Canvas",
-          "id": "/iiif/jacktrice_016/manifest.json",
+          "id": "/collections/jack-trice-demo/iiif/jacktrice_016/manifest.json",
           "label": "Iowa State football team, 1923",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/24-06-d_football_1864-01-01_th.jpg",
+              "id": "/collections/jack-trice-demo/objects/thumbs/24-06-d_football_1864-01-01_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -30,10 +30,10 @@
             {
               "@type": "oa:Annotation",
               "motivation": "sc:painting",
-              "on": "/iiif/jacktrice_016/manifest.json",
+              "on": "/collections/jack-trice-demo/iiif/jacktrice_016/manifest.json",
               "resource": {
                 "@type": "dctypes:Image",
-                "@id": "/objects/24-06-D_Football_1864-01-01.jpg"
+                "@id": "/collections/jack-trice-demo/objects/24-06-D_Football_1864-01-01.jpg"
               }
             }
           ]

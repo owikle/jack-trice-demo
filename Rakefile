@@ -173,6 +173,9 @@ task :generate_manifests do
   # Load _config.yml file
   config = YAML.load_file('_config.yml')
 
+  # Define the base URL
+  base_url = config['baseurl'] || ''
+
   # Get metadata csv value
   csv_file_path = "_data/#{config['metadata']}.csv"
   raise "File #{csv_file_path} does not exist" unless File.exist?(csv_file_path)
@@ -204,13 +207,13 @@ task :generate_manifests do
     # Define manifest structure
     manifest = {
       "@context": "http://iiif.io/api/presentation/3/context.json",
-      "@id": "/iiif/#{parent_row['objectid']}/manifest.json",
+      "@id": "#{base_url}/iiif/#{parent_row['objectid']}/manifest.json",
       "@type": "sc:Manifest",
       "label": {
         "en": [parent_row['title']]
       },
       "attribution": parent_row['contributing_institution'],
-      "logo": "/assets/img/collectionbuilder-logo.png",
+      "logo": "#{base_url}/assets/img/collectionbuilder-logo.png",
       "sequences": [
         {
           "@type": "sc:Sequence",
@@ -225,11 +228,11 @@ task :generate_manifests do
       next unless row['object_location'] # Skip if no object_location
       canvas = {
         "@type": "sc:Canvas",
-        "id": "/iiif/#{parent_row['objectid']}/manifest.json",
+        "id": "#{base_url}/iiif/#{parent_row['objectid']}/manifest.json",
         "label": row['title'],
         "thumbnail": [
           {
-            "id": row['image_thumb'],
+            "id": "#{base_url}#{row['image_thumb']}",
             "type": "Image",
             "format": "image/jpeg",
             "width": 300,
@@ -240,10 +243,10 @@ task :generate_manifests do
           {
             "@type": "oa:Annotation",
             "motivation": "sc:painting",
-            "on": "/iiif/#{parent_row['objectid']}/manifest.json",
+            "on": "#{base_url}/iiif/#{parent_row['objectid']}/manifest.json",
             "resource": {
               "@type": "dctypes:Image",
-              "@id": row['object_location']
+              "@id": "#{base_url}#{row['object_location']}"
             }
           }
         ]
