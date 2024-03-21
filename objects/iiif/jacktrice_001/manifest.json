@@ -19,7 +19,7 @@
           "label": "Front",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-08-01-01_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-08-01-01_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -37,11 +37,10 @@
               }
             }
           ],
-          "service": [
+          "rendering": [
             {
-              "@context": "http://iiif.io/api/search/0/context.json",
               "@id": "/objects/ocr/i-will-01.txt",
-              "profile": "http://iiif.io/api/search/0/search",
+              "format": "text/plain",
               "label": "Raw OCR Data"
             }
           ]
@@ -52,7 +51,7 @@
           "label": "Back",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-08-01-02_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-08-01-02_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -70,11 +69,10 @@
               }
             }
           ],
-          "service": [
+          "rendering": [
             {
-              "@context": "http://iiif.io/api/search/0/context.json",
               "@id": "/objects/ocr/i-will-02.txt",
-              "profile": "http://iiif.io/api/search/0/search",
+              "format": "text/plain",
               "label": "Raw OCR Data"
             }
           ]

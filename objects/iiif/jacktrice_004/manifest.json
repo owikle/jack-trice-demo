@@ -19,7 +19,7 @@
           "label": "Page 1",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-06-02-01_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-06-02-01_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -44,7 +44,7 @@
           "label": "Page 2",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-06-02-02_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-06-02-02_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -69,7 +69,7 @@
           "label": "Page 3",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-06-02-03_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-06-02-03_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -94,7 +94,7 @@
           "label": "Cora Mae Trice Greene letter to David Lendt, August 24, 1988",
           "thumbnail": [
             {
-              "id": "/objects/thumbs/21-07-023_Trice_01-06-02-04_th.jpg",
+              "id": "/objects/thumbs/21-07-023_trice_01-06-02-04_th.jpg",
               "type": "Image",
               "format": "image/jpeg",
               "width": 300,
@@ -112,11 +112,10 @@
               }
             }
           ],
-          "service": [
+          "rendering": [
             {
-              "@context": "http://iiif.io/api/search/0/context.json",
               "@id": "/objects/ocr/cora-letter.txt",
-              "profile": "http://iiif.io/api/search/0/search",
+              "format": "text/plain",
               "label": "Raw OCR Data"
             }
           ]
